@@ -4,7 +4,7 @@ const ordersModel = require("../models/order");
 const customerModel = require("../models/customer");
 
 router.get("/inventory", async (req, res) => {
-  const data = await inventryModel.find();
+  const data = await inventoryModel.find();
   res.status(201).json({
     message: "success",
     data: data,
@@ -26,7 +26,7 @@ router.post("/createInventory", async (req, res) => {
     let inventory_id = `INTD${id}`;
     id = id + 1;
     const { inventory_type, item_name, available_quantity } = req.body;
-    const inventryData = await inventryModel.create({
+    const inventryData = await inventoryModel.create({
       inventory_id,
       inventory_type,
       item_name,
