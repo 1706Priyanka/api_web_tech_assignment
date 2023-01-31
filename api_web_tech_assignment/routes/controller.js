@@ -11,6 +11,14 @@ router.get("/inventory", async (req, res) => {
   });
 });
 
+router.get("/orders", async (req, res) => {
+  const data = await orderModels.find();
+  res.status(201).json({
+    message: "success",
+    data: data,
+  });
+});
+
 router.get("/customer", async (req, res) => {
   const data = await customerModel.find();
   res.status(201).json({
