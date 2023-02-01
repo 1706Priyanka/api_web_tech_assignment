@@ -86,15 +86,15 @@ router.post("/createOrders", async (req, res) => {
     const invenData = await inventoryModel.find({ item_name: item_name });
     console.log(invenData + " <<<<<<<");
     console.log(invenData.inventory_id + " id");
-    // const orderData = await ordersModel.create({
-    //     customer_id: cusData.customer_id,
-    //     inventory_id: invenData.inventory_id,
-    //     item_name: item_name,
-    //     quantity: quantity
-    // })
+    const orderData = await ordersModel.create({
+        customer_id: cusData.customer_id,
+        inventory_id: invenData.inventory_id,
+        item_name: item_name,
+        quantity: quantity
+    })
     res.status(201).json({
       message: "success",
-      data: "orderData",
+      data: orderData,
     });
   } catch (e) {
     res.status(501).json({
